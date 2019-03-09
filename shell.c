@@ -4,7 +4,6 @@
   
   File             shell.c
   Author           Patrick Ryan
-  College          Boston University: Metropolitian College
   Course           CS575 (Operating Systems)
   Date             7/31/2018
 
