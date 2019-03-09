@@ -10,71 +10,8 @@
 
   Compile          gcc -o shell  shell.c
   Run              ./shell
-
-
   Known Bugs:      None
 
-*******************************************************************************************
-
-Development Notes:
-
-- The command history record is maintained on history.txt file stored on users desktop.(to change to another location, update the HISTORY_FILE constand in the begining of the script.
-
-- An internal method called "time" has been added which prints the current time when the command
-is entered.  (Similar to ububtu's built-in "date" terminal command. 
-
-- Three history-related functions ("!!", "!n" and "history" ) have been included as internal commands (similar to their function in ubuntu's default shell)
-
-- "history" will print a list of the user commands entered
-- "!!" will re-run the most recent history item added to the list (but will not add it to the history record file).
-- "!n" (i.e. !4, or !25) will allow the user to access a single entry in the history record file
-
-
-
-
-*******************************************************************************************
-
- Assignment Description
-
-*******************************************************************************************
-
-Question 1 (10 points)
-Implement a shell.
-
- -Your shell should prompt the user for a command. The command prompt must be
-"AB>" where A is the first letter of your first name and B is the first letter of your
-last name.
-- The shell executes a command, if it is an external command, by fork(2)-ing the
-main process and having the child execute the command using a function of
-the exec(3) family. The parent should use a function of the wait(2) family to wait
-for the completion of the child process before continuing.
-If the command is a built-in, the shell execute it without using fork(2) and exec(3).
-- The shell must be able to handle internal commands cd, help, exit and an
-additional built-in command of your choice.
--If the user enters the command exit, the main process should not call fork(2) and
-instead just exit the program successfully.
-
-Question 2 (2 points)
-- Add an ability to handle the history internal command.
-- The history command will print the list of the commands executed by user or
-message indicating the history is empty. Practice the command for better
-understanding before designing a solution.
-- The shell needs to keep every command in a data structure in the same order of
-execution. For this purpose, you may want to implement a simple singly linked
-list.
-- !!: This command will execute the last command the user executed. This
-command should not be added to the history list.
-- !n: This command tells the shell to execute the n-th command in the history. If no
-such command exists it should display an error. This command should not be
-added to the history list. You may find the function atoi(3) helpful in parsing this
-command.
-
-Submission
-- Submit source files, makefile and a list of the commands tested, plus video
-demoing your program trying all the implemented and required features. Specify
-the internal commands implemented. All compilation errors and warnings must
-be resolved before submission. A solution with compilation error and no video
-demo will receive at most 10% of the full points.
 
 
 *******************************************************************************************
@@ -317,7 +254,7 @@ int print_hist_cmd(char **args)
 
 
 
-  FILE *record = NULL;
+  FILE * record = NULL;
   record = fopen(HISTORY_FILE, "r");  // open connection to history record
 
   if (record != NULL)  
